@@ -7,12 +7,11 @@ class RouterClass
     private $grantedRoutes = ['login', 'register', 'admin'];
     private $uriSegments = array();
     public function __construct()
-    {
-        
+    {   
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-    //    unset($_SESSION['cart']);
+        // unset($_SESSION['userdata']);
         $this->uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
     }
     // getAccess of a page

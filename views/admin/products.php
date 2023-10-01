@@ -3,6 +3,22 @@
     <a href="addproduct">Add Product</a>
 </div>
 <h3>Products Listing</h3>
+<?php if (isset($_SESSION['status']) && $_SESSION['status'] === 1) { ?>
+    <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> <?= $_SESSION['message'] ?>
+    </div>
+<?php } ?>
+<?php if (isset($_SESSION['status']) && $_SESSION['status'] === 0) { ?>
+    <div class="alert alert-danger alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Danger!</strong> <?= $_SESSION['message'] ?>
+    </div>
+<?php } ?>
+<?php
+unset($_SESSION['status']);
+unset($_SESSION['message']);
+?>
 <table id="listingTable">
     <tr>
         <th>Name</th>

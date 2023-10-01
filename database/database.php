@@ -70,4 +70,9 @@ class DBConnect
         }
     }
     /**************************** FETCH SINGLE RESULT **************************************/
+    function createGetId($query)
+    {
+        $this->con->query($query);
+        return $this->con->insert_id;
+    }
 }

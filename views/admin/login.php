@@ -1,14 +1,38 @@
-<?php
-include_once('layouts/header.php')
-?>
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="<?= BASEURL ?>assets/styles.css">
+    <style>
+        .container {
+            left: 50%;
+            top: 50%;
+            margin-left: -15%;
+            position: absolute;
+            margin-top: -15%;
+        }
+    </style>
+</head>
 
 <body>
-    <?php
-    include_once('layouts/_navbar.php')
-    ?>
     <div class="container">
         <h3>Admin Login</h3>
-        <form action="<?= BASEURL . 'admin/doLogin' ?>">
+        <?php if (isset($_SESSION['status']) && $_SESSION['status'] === 1) { ?>
+            <div class="alert alert-success alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success!</strong> <?= $_SESSION['message'] ?>
+            </div>
+        <?php } ?>
+        <?php if (isset($_SESSION['status']) && $_SESSION['status'] === 0) { ?>
+            <div class="alert alert-danger alert-dismissible fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Danger!</strong> <?= $_SESSION['message'] ?>
+            </div>
+        <?php } ?>
+        <?php
+        unset($_SESSION['status']);
+        unset($_SESSION['message']);
+        ?>
+        <form action="<?= isset($this->uriSegments[FUNC]) ? 'doLogin' : 'admin/doLogin' ?>" id="form_login" method="post">
             <div class="row">
                 <div class="col-25">
                     <label for="email">Email</label>
@@ -26,11 +50,10 @@ include_once('layouts/header.php')
                 </div>
             </div>
             <div class="row form-buttons">
-                <input type="button" value="Login">
+                <input type="submit" value="Login">
             </div>
         </form>
     </div>
 </body>
-<?php
-include_once('layouts/footer.php')
-?>
+
+</html>

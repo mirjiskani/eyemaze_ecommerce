@@ -7,10 +7,26 @@ class auth
             session_start();
         }
     }
-    public function isLogedIn()
+    public function isUserLogedIn($request)
     {
-        if (isset($_SESSION['isLoged']) && !$_SESSION['isLoged']) {
-            die("User Loged In");
+        if (isset($_SESSION['userdata'])) {
+            if ($_SESSION['userdata']['role'] === 2) {
+                header('location:' . $request . '');
+            } else {
+                header('location:' . BASEURL . 'login');
+            }
+        } else {
+            return false;
+        }
+    }
+    public function isAdminLogedIn($request)
+    {
+        if (isset($_SESSION['userdata'])) {
+            if ($_SESSION['userdata']['role'] === 1) {
+                header('location:' . $request . '');
+            } else {
+                header('location:' . BASEURL . 'admin');
+            }
         } else {
             return false;
         }

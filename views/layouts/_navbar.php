@@ -8,7 +8,7 @@
         <a class="nav-link" href="<?php echo BASEURL; ?>">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item login">
-        <a class="nav-link" href="login">Login</a>
+        <a class="nav-link" href="<?php echo BASEURL; ?>login">Login</a>
       </li>
       <li class="nav-item">
 
@@ -66,7 +66,7 @@
         ?>
       </ul>
 
-      <a href="#" class="button">Checkout <i class="fa fa-chevron-right"></i></a>
+      <a href="order/checkout" class="button">Checkout <i class="fa fa-chevron-right"></i></a>
     </div> <!--end shopping-cart -->
   </div>
 </nav>

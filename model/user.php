@@ -1,5 +1,5 @@
 <?php
-include_once('database/database.php');
+require('database/database.php');
 class userModle
 {
     private $dbObj;
@@ -17,7 +17,7 @@ class userModle
         $hash_passowrd = password_hash($escap_password, PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO eyemaze_ecommerce.users (`firstName`, `lastName`, `email`,`password`,`status`)
-        VALUES ('" . $escap_fname  . "','" . $escap_lname . "','" . $escap_email . "','" . $hash_passowrd . "',1)";
+        VALUES ('" . $escap_fname  . "','" . $escap_lname . "','" . $escap_email . "','" . $hash_passowrd . "',1,2)";
         return $this->dbObj->query_exe($sql);
     }
     public function fetchAll()
@@ -31,5 +31,9 @@ class userModle
         $escap_email = mysqli_real_escape_string($this->dbObj->con, $_POST['email']);
         $sql = "SELECT * FROM eyemaze_ecommerce.users WHERE `email` = '" . $escap_email . "' limit 1";
         return $this->dbObj->fetch_single($sql);
+    }
+    public function escaped_passowrd()
+    {
+        return mysqli_real_escape_string($this->dbObj->con, $_POST['password']);
     }
 }

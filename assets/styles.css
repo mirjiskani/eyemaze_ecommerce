@@ -1,179 +1,205 @@
 body {
-    justify-content: center;
-    align-items: center;
-    font: 14px/22px "Ubuntu", Arial, sans-serif;
-    background: #cdcfd4;
+  justify-content: center;
+  align-items: center;
+  font: 14px/22px "Ubuntu", Arial, sans-serif;
+  background: #cdcfd4;
 }
-.navbar{
-    margin: 10px 50px 0px 50px;
+
+.navbar {
+  margin: 10px 50px 0px 50px;
 }
+
 #navbarNav {
-    padding: 0px;
-    justify-content: center !important;
-    align-items: center !important;
+  padding: 0px;
+  justify-content: center !important;
+  align-items: center !important;
 }
-.login{
-    float: right;
+
+.login {
+  float: right;
 }
+
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
-    margin: 10px;
-    text-align: center;
-    font-family: arial;
-    margin-top: 10px;
-  }
-  .price {
-    color: grey;
-    font-size: 22px;
-  }
-   .card h4 {
-    margin:5px;
-   }
-   .prodDescription{
-    text-align: justify;
-    padding-bottom: 28px;
-    padding-left: 5px;
-    padding-right: 5px
-   }
-   .qtyInput{
-    margin-bottom: 40px !important;
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 11px;
-    border-color: black;
-   }
-   .card button {
-    border: none;
-    outline: 0;
-    padding: 12px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-    margin-bottom: 0px;
-    position: absolute;
-    right:    0;
-    bottom:   0;
-
-
-  }
-  
-  .card button:hover {
-    opacity: 0.7;
-  }
- .productListing{
-    background-color: #f3eaea;
-    margin: 20px 50px 50px 50px;
-   }
-
-   /*  Form CSS */
-
-   * {
-    box-sizing: border-box;
-  }
-  
-  input[type=text]{
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-  }
-  
-  input[type=email] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-  }
-  input[type=password] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-  }
-  label {
-    padding: 12px 12px 12px 0;
-    display: inline-block;
-  }
-
-  input[type=submit] {
-    background-color: #480694;
-    color: white;
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
- 
-  input[type=button]:hover {
-    background-color: #45a049;
-  }
-
-  .container {
-    border-radius: 10px;
-    max-width: 50%;
-    background-color: #f2f2f2;
-    margin: 10px;
-    padding: 30px;
-    margin-left: 25%;
-    position: absolute;
-   }
- 
-   .col-25 {
-    float: left;
-    width: 25%;
-    margin-top: 6px;
-  }
- 
-  .col-75 {
-    float: left;
-    width: 75%;
-    margin-top: 6px;
-  }
- 
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
- .form-buttons{
-    float: right;
-    gap: 9px;
-    justify-content: center;
-    align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: 10px;
+  text-align: center;
+  font-family: arial;
+  margin-top: 10px;
 }
-  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 600px) {
-    .col-25, .col-75, input[type=submit] {
-      width: 100%;
-      margin-top: 0;
-    }
-  }
 
-   /* End of Form CSS */
+.price {
+  color: grey;
+  font-size: 22px;
+}
 
-   /* cart item count  */
-   .badge {
-    padding-left: 9px;
-    padding-right: 9px;
-    -webkit-border-radius: 9px;
-    -moz-border-radius: 9px;
-    border-radius: 9px;
+.card h4 {
+  margin: 5px;
+}
+
+.prodDescription {
+  text-align: justify;
+  padding-bottom: 28px;
+  padding-left: 5px;
+  padding-right: 5px
+}
+
+.qtyInput {
+  margin-bottom: 40px !important;
+   margin-left: 10px !important; 
+  margin-right: 10px !important;
+  border-radius: 11px !important;
+  border-color: black !important;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  margin-bottom: 0px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+
+.productListing {
+  background-color: #f3eaea;
+  margin: 20px 50px 50px 50px !important;
+}
+
+/*  Form CSS */
+
+* {
+  box-sizing: border-box;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+ .creditCardNum{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+} 
+
+input[type=email] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=password] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #480694;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=button]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 10px;
+  max-width: 50%;
+  background-color: #f2f2f2;
+  margin: 10px;
+  padding: 30px;
+  margin-left: 25%;
+  position: absolute;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.form-buttons {
+  float: right;
+  gap: 9px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+
+  .col-25,
+  .col-75,
+  input[type=submit] {
+    width: 100%;
+    margin-top: 0;
   }
-  
-  .label-warning[href],
-  .badge-warning[href] {
-    background-color: #c67605;
-    margin-bottom: 30px;
-  }
-  /* #lblCartCount {
+}
+
+/* End of Form CSS */
+
+/* cart item count  */
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #c67605;
+  margin-bottom: 30px;
+}
+
+/* #lblCartCount {
       font-size: 12px;
       background-color: #c67605;
       color: #fff;
@@ -181,19 +207,22 @@ body {
       vertical-align: top;
       margin-left: -10px; 
   } */
-  .countSpan{
-    position: absolute;
-    margin-left: 20px;
-  }
-  i.fa-solid.fa-cart-shopping.fa-beat-fade.fa-lg {
-    position: absolute;
-    margin-top: 20px;
+.countSpan {
+  position: absolute;
+  margin-left: 20px;
+}
+
+i.fa-solid.fa-cart-shopping.fa-beat-fade.fa-lg {
+  position: absolute;
+  margin-top: 20px;
 }
 
 
 /* Shoping cart drop down css */
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
@@ -205,18 +234,18 @@ nav {
   padding: 20px 0 40px 0;
   background: #eee;
   font-size: 16px;
-  
+
   .navbar-left {
     float: left;
   }
-  
+
   .navbar-right {
     float: right;
     position: relative;
   }
 
-      
-   a {
+
+  a {
     display: inline;
     padding-left: 20px;
     color: #777777;
@@ -234,35 +263,37 @@ nav {
 
 
 .badgeDropdown {
-    background-color: red;
-    border-radius: 10px;
-    color: white;
-    display: inline-block;
-    font-size: 12px;
-    line-height: 1;
-    padding: 4px 3px;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-    margin-bottom: 30px
+  background-color: red;
+  border-radius: 10px;
+  color: white;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  padding: 4px 3px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  margin-bottom: 30px
 }
 
 .shopping-cart.active {
   margin-left: 35%;
   margin-top: 21px;
 }
+
 .shopping-cart {
   background: #f9f9f9;
   font-family: fangsong;
   z-index: 9999;
-  width: 700px;;
+  width: 700px;
+  ;
   position: absolute;
   top: 30px;
   /* center: -10px; */
   border-radius: 3px;
   padding: 20px;
   overflow: hidden;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26)!important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26) !important;
   -webkit-transition: all .2s ease;
   transition: all .2s ease;
   opacity: 0;
@@ -270,19 +301,22 @@ nav {
   -webkit-transform: scale(0);
   transform-origin: center top 0;
   transform: scale(0);
+
   &.active {
     opacity: 1;
     -webkit-transform-origin: center top 0;
     -webkit-transform: scale(1);
     transform-origin: center top 0;
     transform: scale(1);
-    width: 700px;;
-  
+    width: 700px;
+    ;
+
   }
+
   .shopping-cart-header {
     border-bottom: 1px solid #E8E8E8;
     padding-bottom: 45px;
-    
+
     .shopping-cart-total {
       float: right;
       margin-top: 14px;
@@ -290,13 +324,13 @@ nav {
   }
 
   .shopping-cart-items {
-    
+
     padding-top: 20px;
     margin-left: -36px;
 
-      li {
-        margin-bottom: 18px;
-      }
+    li {
+      margin-bottom: 18px;
+    }
 
     img {
       float: left;
@@ -304,11 +338,12 @@ nav {
       max-width: 70px;
       max-height: 70px;
     }
-    
+
     .item-name {
       display: block;
       font-size: 16px;
     }
+
     .item-detail {
       display: block;
       font-size: 12px;
@@ -316,32 +351,32 @@ nav {
       white-space: nowrap;
       overflow: hidden;
     }
-    
-    
+
+
     .item-price {
       color: black;
       margin-right: 8px;
     }
-    
+
     .item-quantity {
       color: black;
     }
   }
-   
+
 }
 
 .shopping-cart:after {
-	bottom: 100%;
-	left: 89%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-	border-bottom-color: white;
-	border-width: 8px;
-	margin-left: -8px;
+  bottom: 100%;
+  left: 89%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: white;
+  border-width: 8px;
+  margin-left: -8px;
 }
 
 .cart-icon {
@@ -352,8 +387,8 @@ nav {
 }
 
 .button {
-  background:#c67605;
-  color:white;
+  background: #c67605;
+  color: white;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -362,6 +397,7 @@ nav {
   font-size: 16px;
   margin: 25px 0 15px 0;
   text-transform: uppercase;
+
   i {
     padding-left: 5px;
   }
@@ -381,10 +417,125 @@ li.clearfix {
   list-style-type: none;
   margin: 0px 0px 4px 0px;
 }
-.removeCartItem{
+
+.removeCartItem {
   float: right;
   font-size: 31px
 }
 
 
 /* Shoping cart drop down css  */
+
+
+/* Checkout page css  */
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: -ms-flexbox;
+  /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap;
+  /* IE10 */
+  flex-wrap: wrap;
+}
+
+.col-25 {
+  -ms-flex: 25%;
+  /* IE10 */
+  flex: 25%;
+  margin-top: 16px;
+}
+
+.col-50 {
+  -ms-flex: 50%;
+  /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%;
+  /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* label {
+  margin-bottom: 10px;
+  display: block;
+} */
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+#payNow {
+  background: #9f175c;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+.cartDetail {
+  background: #f2f2f2 !important;
+  padding: 16px;
+  margin-right: 46px;
+}
+
+.cartDetail p {
+  margin: 11px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+
+/* end of checkout page css  */

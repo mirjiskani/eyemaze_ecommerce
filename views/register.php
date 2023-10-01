@@ -8,18 +8,22 @@ include_once('layouts/header.php')
     ?>
     <div class="container">
         <h3>User Registration</h3>
-        <?php if (isset($message) && $message['status'] === 1) { ?>
+        <?php if (isset($_SESSION['status']) && $_SESSION['status'] === 1) { ?>
             <div class="alert alert-success alert-dismissible">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Success!</strong> <?= $message['message'] ?>
+                <strong>Success!</strong> <?= $_SESSION['message'] ?>
             </div>
         <?php } ?>
-        <?php if (isset($message) && $message['status'] === 0) { ?>
+        <?php if (isset($_SESSION['status']) && $_SESSION['status'] === 0) { ?>
             <div class="alert alert-danger alert-dismissible fade in">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Danger!</strong> <?= $message['message'] ?>
+                <strong>Danger!</strong> <?= $_SESSION['message'] ?>
             </div>
         <?php } ?>
+        <?php
+        unset($_SESSION['status']);
+        unset($_SESSION['message']);
+        ?>
         <form action="register/doRegister" method="post">
             <div class="row">
                 <div class="col-25">
