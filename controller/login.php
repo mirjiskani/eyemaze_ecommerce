@@ -27,7 +27,7 @@ class loginController
                     $_SESSION['userdata'] = $user;
                     $_SESSION["status"] = 1;
                     $_SESSION["message"] = "Logedin successfully";
-                    header("Location:" . BASEURL . "login");
+                    header("Location:" . BASEURL . "");
                 } else {
 
                     $_SESSION["status"] = 0;

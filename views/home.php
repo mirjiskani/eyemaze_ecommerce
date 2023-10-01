@@ -4,7 +4,7 @@ require('layouts/header.php');
 
 <body>
     <?php include('layouts/_navbar.php'); ?>
-    <div class="row productListing">
+    <div class="row productListing" style="padding: 100px !important;padding-top: 17px !important;">
         <?php if (!empty($result)) : ?>
             <?php foreach ($result as $record) : ?>
                 <div class="card">

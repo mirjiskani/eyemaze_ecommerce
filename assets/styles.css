@@ -46,7 +46,7 @@ body {
 
 .qtyInput {
   margin-bottom: 40px !important;
-   margin-left: 10px !important; 
+  margin-left: 10px !important;
   margin-right: 10px !important;
   border-radius: 11px !important;
   border-color: black !important;
@@ -93,13 +93,13 @@ input[type=text] {
   resize: vertical;
 }
 
- .creditCardNum{
+.creditCardNum {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
-} 
+}
 
 input[type=email] {
   width: 100%;
