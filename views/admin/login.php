@@ -6,6 +6,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
+        body{
+            background-color: #aaa;
+        }
         .container {
             left: 50%;
             top: 50%;
@@ -30,7 +33,7 @@
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>Danger!</strong> <?= $_SESSION['message'] ?>
             </div>
-        <?php }?>
+        <?php } ?>
         <?php
         unset($_SESSION['status']);
         unset($_SESSION['message']);
