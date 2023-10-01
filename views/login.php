@@ -30,7 +30,7 @@ include_once('layouts/header.php')
                     <label for="email">Email</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="email" name="email" placeholder="Email...">
+                    <input type="text" id="email" required name="email" placeholder="Email...">
                 </div>
             </div>
             <div class="row">
@@ -38,7 +38,7 @@ include_once('layouts/header.php')
                     <label for="password">Password</label>
                 </div>
                 <div class="col-75">
-                    <input type="password" id="password" name="password" placeholder="password">
+                    <input type="password" required id="password" name="password" placeholder="password">
                 </div>
             </div>
             <div class="row form-buttons">

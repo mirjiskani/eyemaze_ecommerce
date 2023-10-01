@@ -27,6 +27,7 @@
           if (isset($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $record) {
               $items = $items + $record['qty'];
+              $totalPrice += $record['qty'] * $record['price'];
             }
             $styl = 'style="display:block"';
           } else {
@@ -44,7 +45,7 @@
         </a>
         <div class="shopping-cart-total">
           <span class="lighter-text">Total:</span>
-          <span class="main-color-text total">$461.15</span>
+          <span class="main-color-text total">$<?=  $totalPrice  ?></span>
         </div>
       </div> <!--end shopping-cart-header -->
 

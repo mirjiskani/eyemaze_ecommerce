@@ -41,7 +41,7 @@
                     <label for="email">Email</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="email" name="email" placeholder="Email...">
+                    <input type="text" id="email" required name="email" placeholder="Email...">
                 </div>
             </div>
             <div class="row">
@@ -49,7 +49,7 @@
                     <label for="password">Password</label>
                 </div>
                 <div class="col-75">
-                    <input type="password" id="password" name="password" placeholder="password">
+                    <input type="password" id="password" required name="password" placeholder="password">
                 </div>
             </div>
             <div class="row form-buttons">
