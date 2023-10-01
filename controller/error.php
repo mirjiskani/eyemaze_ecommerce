@@ -1,11 +1,11 @@
-<?php 
-class errorController {
+<?php
+class errorController
+{
 
     public function __construct()
     {
-        
     }
-    public function notfound(){
-        
+    public function notfound()
+    {
     }
 }
