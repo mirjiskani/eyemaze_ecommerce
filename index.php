@@ -1,13 +1,15 @@
 <?php
 include_once('authentication/auth.php');
 include_once('constants/define.php');
+include('controller/error.php');
+
 class RouterClass
 {
     const defaultController = 'home';
     private $grantedRoutes = ['login', 'register', 'admin'];
     private $uriSegments = array();
     public function __construct()
-    {   
+    {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
@@ -26,25 +28,47 @@ class RouterClass
         } else {
             $auth = new auth();
             if (in_array($this->uriSegments[CONTROLLER], $this->grantedRoutes)) {
-                include('controller/' . $this->uriSegments[CONTROLLER] . '.php');
-                $controller = $this->uriSegments[CONTROLLER] . 'Controller';
-                $ob =  new $controller();
-                if (isset($this->uriSegments[FUNC])) {
-                    $function =  $this->uriSegments[FUNC];
-                    $ob->$function();
+                if (file_exists('controller/' . $this->uriSegments[CONTROLLER] . '.php')) {
+                    include('controller/' . $this->uriSegments[CONTROLLER] . '.php');
+                    $controller = $this->uriSegments[CONTROLLER] . 'Controller';
+                    $ob =  new $controller();
+                    if (isset($this->uriSegments[FUNC]) && $this->uriSegments[FUNC] != '') {
+                        if (!method_exists($ob, '' . $this->uriSegments[FUNC] . '')) {
+                            $errob =  new errorController();
+                            $errob->notfound();
+                        }
+                        $function =  $this->uriSegments[FUNC];
+                        $ob->$function();
+                    } else {
+                        $ob->index();
+                    }
                 } else {
-                    $ob->index();
+                    $ob =  new errorController();
+                    $ob->notfound();
                 }
             } else {
-
-                include('controller/' . $this->uriSegments[CONTROLLER] . '.php');
-                $controller = $this->uriSegments[CONTROLLER] . 'Controller';
-                $ob =  new $controller();
-                if (isset($this->uriSegments[FUNC])) {
-                    $function =  $this->uriSegments[FUNC];
-                    $ob->$function();
-                } else {
-                    $ob->index();
+                try {
+                    if (file_exists('controller/' . $this->uriSegments[CONTROLLER] . '.php')) {
+                        include('controller/' . $this->uriSegments[CONTROLLER] . '.php');
+                        $controller = $this->uriSegments[CONTROLLER] . 'Controller';
+                        $ob =  new $controller();
+                        if (isset($this->uriSegments[FUNC]) && $this->uriSegments[FUNC] != '') {
+                            if (!method_exists($ob, '' . $this->uriSegments[FUNC] . '')) {
+                                $errob =  new errorController();
+                                $errob->notfound();
+                            }
+                            $function =  $this->uriSegments[FUNC];
+                            $ob->$function();
+                        } else {
+                            $ob->index();
+                        }
+                    } else {
+                        $errob =  new errorController();
+                        $errob->notfound();
+                    }
+                } catch (\Throwable $th) {
+                    $errob =  new errorController();
+                    $errob->notfound();
                 }
             }
         }

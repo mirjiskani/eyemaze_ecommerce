@@ -8,7 +8,14 @@
         <a class="nav-link" href="<?php echo BASEURL; ?>">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item login">
-        <a class="nav-link" href="<?php echo BASEURL; ?>login">Login</a>
+        <?php if (isset($_SESSION['userdata']) && $_SESSION['userdata']['role'] == '2') {
+        ?>
+          <a class="nav-link" href="<?php echo BASEURL; ?>user/logout">Logout</a>
+        <?php
+        } else {
+        ?>
+          <a class="nav-link" href="<?php echo BASEURL; ?>login">Login</a>
+        <?php  } ?>
       </li>
       <li class="nav-item">
 

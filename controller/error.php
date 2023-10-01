@@ -7,5 +7,6 @@ class errorController
     }
     public function notfound()
     {
+        include('views/error.php');
     }
 }

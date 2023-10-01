@@ -3,19 +3,20 @@
 require('model/order.php');
 // Include STRIPE PHP Library
 require_once('stripe-php/init.php');
+require_once('authentication/Auth.php');
 class orderController
 {
     private $orderModel;
     private $uriSegments;
     private $stripe;
-
+    private $checkAuthUser;
 
     public function __construct()
     {
         $this->orderModel = new orderModel();
+        $this->checkAuthUser = new auth();
         $this->uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
         //  $this->stripe =new \Stripe\StripeClient('sk_test_BQokikJOvBiI2HlWgH4olfQ2'); ;
-
     }
     public function checkout()
     {
@@ -23,6 +24,7 @@ class orderController
     }
     public function placeOrder()
     {
+        $this->checkAuthUser->isUserLogedIn();
         if (isset($_SESSION['cart']) && isset($_POST['orderPlaced'])) {
             $orderId = $this->orderModel->createOrder();
             $token = $_POST['stripeToken'];
@@ -93,7 +95,11 @@ class orderController
                     'datetime' => date("Y-m-d H:i:s"),
                     'card_holder_name' => $cardHolderName,
                     'cardno' => $card_no,
-                    'orderId' => $orderId
+                    'orderId' => $orderId,
+                    'address' => $address,
+                    'city' => $city,
+                    'state' => $state,
+                    'country' => 'UAE'
                 );
                 $this->orderModel->createPyamentDetailUpdateOrderStatus($data);
                 // If the order is successful 

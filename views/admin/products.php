@@ -31,7 +31,7 @@ unset($_SESSION['message']);
     <?php if (!empty($result)) : ?>
         <?php foreach ($result as $record) : ?>
             <?php
-            $status = ['In Active', 'Active']
+            $status = ['In Active', 'Active'];
             ?>
             <tr>
                 <td><?= $record['product_name'] ?></td>

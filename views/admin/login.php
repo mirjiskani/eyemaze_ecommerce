@@ -2,11 +2,14 @@
 
 <head>
     <link rel="stylesheet" href="<?= BASEURL ?>assets/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
         .container {
             left: 50%;
             top: 50%;
-            margin-left: -15%;
+            margin-left: -20%;
             position: absolute;
             margin-top: -15%;
         }
@@ -27,12 +30,12 @@
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>Danger!</strong> <?= $_SESSION['message'] ?>
             </div>
-        <?php } ?>
+        <?php }?>
         <?php
         unset($_SESSION['status']);
         unset($_SESSION['message']);
         ?>
-        <form action="<?= isset($this->uriSegments[FUNC]) ? 'doLogin' : 'admin/doLogin' ?>" id="form_login" method="post">
+        <form action="<?= isset($this->uriSegments[FUNC]) ? 'doLogin' : '' . BASEURL . 'admin/doLogin' ?>" id="form_login" method="post">
             <div class="row">
                 <div class="col-25">
                     <label for="email">Email</label>
@@ -50,7 +53,7 @@
                 </div>
             </div>
             <div class="row form-buttons">
-                <input type="submit" value="Login">
+                <input type="submit" name="submit" value="Login">
             </div>
         </form>
     </div>

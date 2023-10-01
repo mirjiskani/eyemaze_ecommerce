@@ -1,82 +1,40 @@
 <?= include('header.php') ?>
-<h1 class="contentheading">Orders Listing</h1>
-<div class="report-container">
-    <div class="report-header">
-        <h1 class="recent-Articles">Recent Articles</h1>
-        <button class="view">View All</button>
-    </div>
+<h3>Order Listing</h3>
+<table id="listingTable">
+    <tr>
+        <th>OID</th>
+        <th>Customer Name</th>
+        <th>Email</th>
+        <th>Payment</th>
+        <th>Amount Paid </th>
+        <th>Currency </th>
+        <th>Transection ID </th>
+        <th>Card Holder </th>
+        <th>Date Time </th>
+        <th>Action</th>
+    </tr>
+    <?php if (!empty($result)) : ?>
+        <?php foreach ($result as $record) : ?>
+            <tr>
+                <td><?= $record['idorders'] ?></td>
+                <td><?= isset($record['firstName']) ? $record['firstName'] . ' ' . $record['lastName'] : '' ?></td>
+                <td><?= isset($record['email']) ? $record['email'] : '' ?></td>
+                <td><?= ($record['ispaid'] == '0') ? 'Not paid' : $record['ispaid'] ?></td>
+                <td><?= isset($record['amount']) ? $record['amount'] : '' ?></td>
+                <td><?= isset($record['currency']) ? $record['currency'] : '' ?></td>
+                <td><?= isset($record['transectionid']) ? $record['transectionid'] : '' ?></td>
+                <td><?= isset($record['cardholder']) ? $record['cardholder'] : '' ?></td>
+                <td><?= isset($record['date']) ? $record['date'] : '' ?></td>
+                <td class="actionTd"><a href="<?= BASEURL . 'admin/ordersDetails?id=' . $record['idorders'] ?>"><button class="btn btn-primary">View Details</button></a></td>
+            </tr>
+        <?php endforeach ?>
+    <?php else : ?>
+        <tr>
+            <td colspan="6">No orders</td>
+        </tr>
+    <?php endif ?>
 
-    <div class="report-body">
-        <div class="report-topic-heading">
-            <h3 class="t-op">Article</h3>
-            <h3 class="t-op">Views</h3>
-            <h3 class="t-op">Comments</h3>
-            <h3 class="t-op">Status</h3>
-        </div>
 
-        <div class="items">
-            <div class="item1">
-                <h3 class="t-op-nextlvl">Article 73</h3>
-                <h3 class="t-op-nextlvl">2.9k</h3>
-                <h3 class="t-op-nextlvl">210</h3>
-                <h3 class="t-op-nextlvl label-tag">Published</h3>
-            </div>
+</table>
 
-            <div class="item1">
-                <h3 class="t-op-nextlvl">Article 72</h3>
-                <h3 class="t-op-nextlvl">1.5k</h3>
-                <h3 class="t-op-nextlvl">360</h3>
-                <h3 class="t-op-nextlvl label-tag">Published</h3>
-            </div>
-
-            <div class="item1">
-                <h3 class="t-op-nextlvl">Article 71</h3>
-                <h3 class="t-op-nextlvl">1.1k</h3>
-                <h3 class="t-op-nextlvl">150</h3>
-                <h3 class="t-op-nextlvl label-tag">Published</h3>
-            </div>
-
-            <div class="item1">
-                <h3 class="t-op-nextlvl">Article 70</h3>
-                <h3 class="t-op-nextlvl">1.2k</h3>
-                <h3 class="t-op-nextlvl">420</h3>
-                <h3 class="t-op-nextlvl label-tag">Published</h3>
-            </div>
-
-            <div class="item1">
-                <h3 class="t-op-nextlvl">Article 69</h3>
-                <h3 class="t-op-nextlvl">2.6k</h3>
-                <h3 class="t-op-nextlvl">190</h3>
-                <h3 class="t-op-nextlvl label-tag">Published</h3>
-            </div>
-
-            <div class="item1">
-                <h3 class="t-op-nextlvl">Article 68</h3>
-                <h3 class="t-op-nextlvl">1.9k</h3>
-                <h3 class="t-op-nextlvl">390</h3>
-                <h3 class="t-op-nextlvl label-tag">Published</h3>
-            </div>
-
-            <div class="item1">
-                <h3 class="t-op-nextlvl">Article 67</h3>
-                <h3 class="t-op-nextlvl">1.2k</h3>
-                <h3 class="t-op-nextlvl">580</h3>
-                <h3 class="t-op-nextlvl label-tag">Published</h3>
-            </div>
-
-            <div class="item1">
-                <h3 class="t-op-nextlvl">Article 66</h3>
-                <h3 class="t-op-nextlvl">3.6k</h3>
-                <h3 class="t-op-nextlvl">160</h3>
-                <h3 class="t-op-nextlvl label-tag">Published</h3>
-            </div>
-
-            <div class="item1">
-                <h3 class="t-op-nextlvl">Article 65</h3>
-                <h3 class="t-op-nextlvl">1.3k</h3>
-                <h3 class="t-op-nextlvl">220</h3>
-                <h3 class="t-op-nextlvl label-tag">Published</h3>
-            </div>
-        </div>
-    </div>
-    <?= include('footer.php') ?>
+<?= include('footer.php') ?>

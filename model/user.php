@@ -16,12 +16,14 @@ class userModle
         $escap_password = mysqli_real_escape_string($this->dbObj->con, $_POST['password']);
         $hash_passowrd = password_hash($escap_password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO eyemaze_ecommerce.users (`firstName`, `lastName`, `email`,`password`,`status`)
+        $sql = "INSERT INTO eyemaze_ecommerce.users (`firstName`, `lastName`, `email`,`password`,`status`,`role`)
         VALUES ('" . $escap_fname  . "','" . $escap_lname . "','" . $escap_email . "','" . $hash_passowrd . "',1,2)";
         return $this->dbObj->query_exe($sql);
     }
     public function fetchAll()
     {
+        $sql = 'SELECT * FROM eyemaze_ecommerce.users';
+        return $this->dbObj->fetch_all($sql);
     }
     public function updateProfile()
     {

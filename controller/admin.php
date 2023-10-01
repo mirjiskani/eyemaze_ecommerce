@@ -1,37 +1,37 @@
 <?php
 
-require_once ('traits/upload.php');
-require_once ('model/Product.php');
-require_once ('model/user.php');
-require_once ('model/order.php');
+require_once('traits/upload.php');
+require_once('authentication/Auth.php');
+
 class adminController
 {
     use uploadImage;
     private $productModel;
     private $uriSegments;
-    private $products = ['products', 'addproduct', 'deleteProduct'];
-    private $users = ['doLogin', 'users'];
-    private $orders = ['orders', 'ordersDetails'];
     private $userModel;
     private $orderModel;
+    private $checkAuthUser;
+    // private $request;
     public function __construct()
     {
+        // unset($_SESSION['adminuser']);
         $this->uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+        $this->checkAuthUser = new auth();
+        // if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+        //     $this->request .= "https://";
+        // } else {
+        //     $this->request .= "http://";
+        //     // Append the host(domain name, ip) to the URL.   
+        //     $this->request .= $_SERVER['HTTP_HOST'];
+        //     // Append the requested resource location to the URL   
+        //     $this->request .= $_SERVER['REQUEST_URI'];
+        // }
 
-        if (in_array($this->uriSegments[FUNC], $this->products)) {
-            $this->productModel = new productModel();
-        }
-
-        if (in_array($this->uriSegments[FUNC], $this->users)) {
-            $this->userModel = new userModle();
-        }
-
-        if (in_array($this->uriSegments[FUNC], $this->orders)) {
-            $this->orderModel = new orderModel();
-        }
     }
     public function doLogin()
     {
+        require_once('model/user.php');
+        $this->userModel = new userModle();
         if (isset($_POST['submit'])) {
             $user = $this->userModel->hasUser();
             if (!empty($user)) {
@@ -39,7 +39,7 @@ class adminController
 
                 $verify = password_verify($hash_passowrd, $user['password']);
                 if ($verify) {
-                    $_SESSION['userdata'] = $user;
+                    $_SESSION['adminuser'] = $user;
                     header("Location:" . BASEURL . "admin/dashboard");
                 } else {
 
@@ -58,31 +58,63 @@ class adminController
     } //end of do login
     public function index()
     {
-        include('views/admin/login.php');
+        if (isset($_SESSION['adminuser'])) {
+            if ($this->checkAuthUser->isAdminLogedIn()) {
+                header('location:' . BASEURL . 'admin/dashboard');
+            } else {
+                include('views/admin/login.php');
+            }
+        } else {
+            include('views/admin/login.php');
+        }
     }
     public function dashboard()
     {
+        $this->checkAuthUser->isAdminLogedIn();
         include('views/admin/dashboard.php');
     }
     public function users()
     {
+        $this->checkAuthUser->isAdminLogedIn();
+        require_once('model/user.php');
+        $this->userModel = new userModle();
+        $result = $this->userModel->fetchAll();
         include('views/admin/users.php');
     }
     public function orders()
     {
+        $this->checkAuthUser->isAdminLogedIn();
+        require_once('model/order.php');
+        $this->orderModel = new orderModel();
+        $result = $this->orderModel->fetchAll();
         include('views/admin/orders.php');
     }
     public function ordersDetails()
     {
-        include('views/admin/dashboard.php');
+        if (isset($_GET['id']) && isset($_GET['id']) != '') {
+            $this->checkAuthUser->isAdminLogedIn();
+            require_once('model/order.php');
+            $this->orderModel = new orderModel();
+            $result = $this->orderModel->fetchOrderDetail($_GET['id']);
+            include('views/admin/orderdetail.php');
+        } else {
+            include('views/admin/error.php');
+        }
     }
     public function products()
     {
+        $this->checkAuthUser->isAdminLogedIn();
+        require_once('model/Product.php');
+        $this->productModel = new productModel();
         $result =  $this->productModel->fetchProduct();
         include('views/admin/products.php');
     }
     public function addproduct()
     {
+        $this->checkAuthUser->isAdminLogedIn();
+        require_once('model/Product.php');
+        $this->productModel = new productModel();
+
         $queryReuslt = [];
         if (isset($_POST['submit'])) {
             $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/eyemaze_ecommerce/assets/images/" . strtotime(date("Y-m-d h:i:sa")) . '_';
@@ -97,11 +129,11 @@ class adminController
             if ($queryReuslt) {
                 $_SESSION["status"] = 1;
                 $_SESSION["message"] = "Product added successfully";
-                header("Location:" . BASEURL . " products");
+                header("Location:" . BASEURL . "admin/products");
             } else {
                 $_SESSION["status"] = 0;
                 $_SESSION["message"] = "Product added fialed";
-                header("Location:" . BASEURL . " products");
+                header("Location:" . BASEURL . "admin/products");
             }
         } else {
             include('views/admin/addproduct.php');
@@ -109,17 +141,21 @@ class adminController
     }
     public function deleteProduct()
     {
+        $this->checkAuthUser->isAdminLogedIn();
+        require_once('model/Product.php');
+        $this->productModel = new productModel();
+
         $queryReuslt = $this->productModel->deleteProduct();
         if ($queryReuslt) {
             $_SESSION["status"] = 1;
             $_SESSION["message"] = "Product deleted successfully";
 
-            header("Location:" . BASEURL . " products");
+            header("Location:" . BASEURL . "admin/products");
         } else {
             $_SESSION["status"] = 0;
             $_SESSION["message"] = "Product deleted fialed";
 
-            header("Location:" . BASEURL . " products");
+            header("Location:" . BASEURL . "admin/products");
         }
     }
 
@@ -133,6 +169,7 @@ class adminController
     }
     public function logout()
     {
-        die("logout");
+        unset($_SESSION['adminuser']);
+        header('location:' . BASEURL . 'admin');
     }
 }
