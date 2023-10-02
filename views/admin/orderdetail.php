@@ -15,7 +15,7 @@
             // print_r($result);
         ?>
             <div class="d-flex justify-content-between align-items-center py-3 card">
-                <h2 class="h5 mb-0"><a href="#" class="text-muted"></a> Order <strong>#16123222</strong></h2>
+                <h2 class="h5 mb-0"><a href="#" class="text-muted"></a> Order <strong>#<?= $_GET['id']?></strong></h2>
             </div>
 
             <!-- Main content -->
