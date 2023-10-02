@@ -34,17 +34,17 @@ class orderModel
     {
 
         $sql = "SELECT * FROM eyemaze_ecommerce.orders
-        INNER JOIN eyemaze_ecommerce.users ON eyemaze_ecommerce.orders.userid=eyemaze_ecommerce.users.idusers
-        INNER JOIN eyemaze_ecommerce.payments ON eyemaze_ecommerce.orders.paymentid=eyemaze_ecommerce.payments.idpayment";
+         LEFT JOIN eyemaze_ecommerce.users ON eyemaze_ecommerce.orders.userid=eyemaze_ecommerce.users.idusers
+         LEFT JOIN eyemaze_ecommerce.payments ON eyemaze_ecommerce.orders.paymentid=eyemaze_ecommerce.payments.idpayment";
         return $this->dbObj->fetch_all($sql);
     } //end of fetch all
     public function fetchOrderDetail($oid)
     {
         $sql = "SELECT *,eyemaze_ecommerce.products.product_image FROM eyemaze_ecommerce.orders
-        RIGHT JOIN eyemaze_ecommerce.users ON eyemaze_ecommerce.orders.userid=eyemaze_ecommerce.users.idusers
-        RIGHT JOIN eyemaze_ecommerce.orderdetail ON eyemaze_ecommerce.orders.idorders=eyemaze_ecommerce.orderdetail.orderid
-        RIGHT JOIN eyemaze_ecommerce.payments ON eyemaze_ecommerce.orders.paymentid=eyemaze_ecommerce.payments.idpayment
-        INNER JOIN eyemaze_ecommerce.products ON  eyemaze_ecommerce.products.idproducts=eyemaze_ecommerce.orderdetail.product_id
+        LEFT JOIN eyemaze_ecommerce.users ON eyemaze_ecommerce.orders.userid=eyemaze_ecommerce.users.idusers
+        LEFT JOIN eyemaze_ecommerce.orderdetail ON eyemaze_ecommerce.orders.idorders=eyemaze_ecommerce.orderdetail.orderid
+        LEFT JOIN eyemaze_ecommerce.payments ON eyemaze_ecommerce.orders.paymentid=eyemaze_ecommerce.payments.idpayment
+        LEFT JOIN eyemaze_ecommerce.products ON  eyemaze_ecommerce.products.idproducts=eyemaze_ecommerce.orderdetail.product_id
         where eyemaze_ecommerce.orders.idorders = " . $oid;
         return $this->dbObj->fetch_all($sql);
     }
